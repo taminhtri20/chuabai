@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <h3>Create new song</h3>
+    <p>
+        <a th:href="@{musicapp}">
+            Back to list song
+        </a>
+    </p>
+</center>
+<div id="form">
+    <form th:action="@{/musicapp/delete}" method="post" novalidate="novalidate" th:object="${song}" >
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label>Song: </label>
+            <input type="text" th:field="*{nameSong}">
+        </div>
+        <div>
+            <label>Singer: </label>
+            <input type="text" th:field="*{nameSinger}">
+        </div>
+        <div>
+            <label>Kind of music: </label>
+            <input type="text" th:field="*{kindOfMusic}">
+        </div>
+        <div>
+            <label>Directory: </label>
+            <input type="text" th:field="*{directorySong}">
+        </div>
+        <input type="submit" value="delete">
+    </form>
+</div>
+</body>
+</html>
