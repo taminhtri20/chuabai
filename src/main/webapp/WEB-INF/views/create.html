@@ -1,30 +1,45 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" lang="en">
 <head th:replace="/layout :: head">
     <title>CreateCustomer</title>
 </head>
 <body>
 <h3>Add Customer</h3>
 <p>
-    <a th:href="@{/customers}">
-        Back to customer list
+    <a th:href="@{/city}">
+        Back to city list
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/customers/save}" th:object="${customer}"
+    <form th:action="@{/city/save}" th:object="${city}"
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{id}"/>
         <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" th:field="*{name}"/>
+            <label for="name">City</label>
+            <input type="text" id="name" th:field="*{nameCity}"/>
         </div>
         <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" th:field="*{email}"/>
+            <label>Nation</label>
+            <select th:field="*{nameNation}">
+                <option th:each="na : ${nation}" th:value="${na.getNameCity()}" th:text="${na.getNameCity()}" th:name="${na.getNameCity()}">
+                </option>
+            </select>
         </div>
         <div>
-            <label for="address">Address</label>
-            <input type="text" id="address" th:field="*{address}"/>
+            <label for="area">Area</label>
+            <input type="text" id="area" th:field="*{area}"/>
+        </div>
+        <div>
+            <label for="population">Population</label>
+            <input type="text" id="population" th:field="*{population}"/>
+        </div>
+        <div>
+            <label for="gdp">GDP</label>
+            <input type="text" id="gdp" th:field="*{gdp}"/>
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <input type="text" id="description" th:field="*{description}"/>
         </div>
         <input type="submit" value="Save"/>
     </form>

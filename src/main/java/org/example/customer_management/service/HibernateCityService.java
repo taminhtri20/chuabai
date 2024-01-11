@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Optional;
 
-public class HibernateCustomerService implements ICityService {
+public class HibernateCityService implements ICityService {
     @Autowired
     CityRepository cityRepository;
 
@@ -37,7 +37,7 @@ public class HibernateCustomerService implements ICityService {
 
     @Override
     public List<City> findByName(String name) {
-        List<City> customerList = cityRepository.findByNameContainsIgnoreCase(name);
+        List<City> customerList = cityRepository.findByNameCityContainsIgnoreCase(name);
         return customerList;
     }
 }

@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="/layout :: head">
-    <title>ListCustomer</title>
+    <title>ListCity</title>
 </head>
 <body>
-<h3>Customers</h3>
+<h3>City</h3>
 <p>
-    <a th:href="@{/customers/create}">
-        Add new customer
+    <a th:href="@{/city/create}">
+        Add new city
     </a>
 </p>
-<form method="post" th:action="@{/customers/search}" novalidate="novalidate">
-    <input type="search" placeholder="Searching in here" name="name">
-    <input type="submit" value="Search">
-</form>
 
 <div class="notify">
     <div th:if="${success}">
@@ -21,28 +17,27 @@
     </div>
 </div>
 
-<table id = "customers">
+<table id = "city">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
+        <th>Id</th>
+        <th>City</th>
+        <th>Nation</th>
         <th>Edit</th>
         <th>Delete</th>
-        <th>View</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="row,rowStat : ${listCustomer}">
-        <td th:text="${row.getName()}"></td>
-        <td th:text="${row.getEmail()}"></td>
-        <td th:text="${row.getAddress()}"></td>
-        <td><a th:href="@{/customers/{id}/edit(id=${row.getId()})}">edit</a></td>
-        <td><a th:href="@{/customers/{id}/delete(id=${row.getId()})}">delete</a></td>
-        <td><a th:href="@{/customers/{id}/view(id=${row.getId()})}">view</a></td>
+    <tr th:each="row,rowStat : ${listCity}">
+        <td th:text="${row.getId()}"></td>
+        <td>
+            <a th:href="@{/city/{id}/view(id=${row.getId()})}"  th:text="${row.getNameCity()}"></a>
+        </td>
+        <td th:text="${row.getNameNation()}"></td>
+        <td><a th:href="@{/city/{id}/edit(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/city/{id}/delete(id=${row.getId()})}">delete</a></td>
     </tr>
     </tbody>
 </table>
-<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
